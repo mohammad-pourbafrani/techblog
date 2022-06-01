@@ -1,0 +1,151 @@
+import 'package:flutter/material.dart';
+import 'package:techblog/gen/assets.gen.dart';
+import 'package:techblog/my_colors.dart';
+import 'package:techblog/view/home_screen.dart';
+import 'package:techblog/view/profile_screen.dart';
+
+class MainScreen extends StatefulWidget {
+  const MainScreen({Key? key}) : super(key: key);
+
+  @override
+  State<MainScreen> createState() => _MainScreenState();
+}
+
+class _MainScreenState extends State<MainScreen> {
+  var selectedPageIndex = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    var textThem = Theme.of(context).textTheme;
+    var size = MediaQuery.of(context).size;
+    double bodyMargin = size.width / 10;
+
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: SolidColors.scaffoldBg,
+        appBar: AppBar(
+          elevation: 0,
+          backgroundColor: SolidColors.scaffoldBg,
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              const Icon(
+                Icons.menu,
+                color: Colors.black,
+              ),
+              Image(
+                image: Assets.images.logo,
+                height: size.height / 13.6,
+              ),
+              const Icon(
+                Icons.search,
+                color: Colors.black,
+              )
+            ],
+          ),
+        ),
+        body: Stack(
+          children: [
+            Positioned.fill(
+              child: IndexedStack(
+                index: selectedPageIndex,
+                children: [
+                  HomeScreen(
+                      size: size, textThem: textThem, bodyMargin: bodyMargin),
+                  ProfileScreen(
+                      size: size, textThem: textThem, bodyMargin: bodyMargin)
+                ],
+              ),
+            ),
+
+            //navigation bar bottem
+            BottomNavigation(
+              size: size,
+              bodyMargin: bodyMargin,
+              changeScreen: (int value) {
+                setState(() {
+                  selectedPageIndex = value;
+                });
+              },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class BottomNavigation extends StatelessWidget {
+  const BottomNavigation({
+    Key? key,
+    required this.size,
+    required this.bodyMargin,
+    required this.changeScreen,
+  }) : super(key: key);
+
+  final Size size;
+  final double bodyMargin;
+  final Function(int) changeScreen;
+
+  @override
+  Widget build(BuildContext context) {
+    return Positioned(
+      bottom: 0,
+      left: 0,
+      right: 0,
+      child: Container(
+        height: size.height / 10,
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: GradiantColors.bottomNavBackground,
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
+        ),
+        child: Padding(
+          padding: EdgeInsets.only(right: bodyMargin, left: bodyMargin),
+          child: Container(
+            height: size.height / 8,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(24),
+              gradient: const LinearGradient(
+                colors: GradiantColors.bottomNav,
+                begin: Alignment.centerLeft,
+                end: Alignment.centerRight,
+              ),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                IconButton(
+                  onPressed: () => changeScreen(0),
+                  icon: ImageIcon(
+                    Assets.icons.home,
+                    color: Colors.white,
+                    size: 32,
+                  ),
+                ),
+                IconButton(
+                  onPressed: () {},
+                  icon: ImageIcon(
+                    Assets.icons.write,
+                    color: Colors.white,
+                    size: 32,
+                  ),
+                ),
+                IconButton(
+                  onPressed: () => changeScreen(1),
+                  icon: ImageIcon(
+                    Assets.icons.user,
+                    color: Colors.white,
+                    size: 32,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}

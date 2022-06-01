@@ -1,8 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:techblog/splash_screen.dart';
+import 'package:techblog/my_colors.dart';
+import 'package:techblog/view/splash_screen.dart';
 
 void main() {
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+    statusBarColor: SolidColors.statusBarColor,
+    statusBarIconBrightness: Brightness.dark,
+    systemNavigationBarColor: SolidColors.systemNavigationBarColor,
+    systemNavigationBarIconBrightness: Brightness.dark,
+  ));
+
   runApp(const MyApp());
 }
 
@@ -27,20 +36,26 @@ class MyApp extends StatelessWidget {
         textTheme: const TextTheme(
           headline1: TextStyle(
             fontFamily: 'Vazir',
-            fontSize: 14,
-            color: Color.fromARGB(255, 255, 255, 255),
+            fontSize: 16,
+            color: SolidColors.posterTitle,
+            fontWeight: FontWeight.w700,
+          ),
+          subtitle1: TextStyle(
+            fontFamily: 'Vazir',
+            fontSize: 13,
+            color: SolidColors.posterSubTitle,
             fontWeight: FontWeight.w300,
           ),
           headline2: TextStyle(
             fontFamily: 'Vazir',
-            fontSize: 16,
+            fontSize: 14,
             color: Color.fromARGB(255, 255, 255, 255),
-            fontWeight: FontWeight.w500,
+            fontWeight: FontWeight.w300,
           ),
           headline3: TextStyle(
             fontFamily: 'Vazir',
             fontSize: 14,
-            color: Color.fromARGB(255, 40, 107, 184),
+            color: SolidColors.colorSeeMore,
             fontWeight: FontWeight.w700,
           ),
           headline4: TextStyle(
@@ -57,6 +72,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
+      // home: const SplashScreen(),
       home: const SplashScreen(),
     );
   }
