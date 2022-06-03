@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:techblog/gen/assets.gen.dart';
-
 import 'package:techblog/my_string.dart';
+import 'package:validators/validators.dart';
 
 class RegisterIntro extends StatelessWidget {
   const RegisterIntro({Key? key}) : super(key: key);
@@ -34,51 +34,7 @@ class RegisterIntro extends StatelessWidget {
               ),
               ElevatedButton(
                 onPressed: () {
-                  showModalBottomSheet(
-                      isScrollControlled: true,
-                      backgroundColor: Colors.transparent,
-                      context: context,
-                      builder: (context) {
-                        return Padding(
-                          padding: EdgeInsets.only(
-                              bottom: MediaQuery.of(context).viewInsets.bottom),
-                          child: Container(
-                            height: size.height / 2,
-                            decoration: const BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(30),
-                                topRight: Radius.circular(30),
-                              ),
-                            ),
-                            child: Center(
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    MyString.textInsertEmail,
-                                    style: textThem.headline4,
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.all(24),
-                                    child: TextField(
-                                      textAlign: TextAlign.center,
-                                      decoration: InputDecoration(
-                                        hintText: "techblog@gmail.com",
-                                        hintStyle: textThem.headline6,
-                                      ),
-                                    ),
-                                  ),
-                                  ElevatedButton(
-                                    onPressed: () {},
-                                    child: const Text("ادامه"),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        );
-                      });
+                  _showEmailBottomSheet(context, size, textThem);
                 },
                 child: const Text(
                   "بزن بریم",
@@ -89,5 +45,56 @@ class RegisterIntro extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Future<dynamic> _showEmailBottomSheet(
+      BuildContext context, Size size, TextTheme textThem) {
+    return showModalBottomSheet(
+        isScrollControlled: true,
+        backgroundColor: Colors.transparent,
+        context: context,
+        builder: (context) {
+          return Padding(
+            padding: EdgeInsets.only(
+                bottom: MediaQuery.of(context).viewInsets.bottom),
+            child: Container(
+              height: size.height / 2,
+              decoration: const BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(30),
+                  topRight: Radius.circular(30),
+                ),
+              ),
+              child: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      MyString.textInsertEmail,
+                      style: textThem.headline4,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(24),
+                      child: TextField(
+                        style: textThem.headline4,
+                        onChanged: (value) {},
+                        textAlign: TextAlign.center,
+                        decoration: InputDecoration(
+                          hintText: "techblog@gmail.com",
+                          hintStyle: textThem.headline6,
+                        ),
+                      ),
+                    ),
+                    ElevatedButton(
+                      onPressed: () {},
+                      child: const Text("ادامه"),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          );
+        });
   }
 }
