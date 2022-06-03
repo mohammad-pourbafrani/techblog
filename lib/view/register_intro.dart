@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:techblog/gen/assets.gen.dart';
-import 'package:techblog/my_colors.dart';
+
 import 'package:techblog/my_string.dart';
 
 class RegisterIntro extends StatelessWidget {
@@ -10,6 +10,7 @@ class RegisterIntro extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var textThem = Theme.of(context).textTheme;
+    var size = MediaQuery.of(context).size;
 
     return SafeArea(
       child: Scaffold(
@@ -32,24 +33,57 @@ class RegisterIntro extends StatelessWidget {
                 ),
               ),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  showModalBottomSheet(
+                      isScrollControlled: true,
+                      backgroundColor: Colors.transparent,
+                      context: context,
+                      builder: (context) {
+                        return Padding(
+                          padding: EdgeInsets.only(
+                              bottom: MediaQuery.of(context).viewInsets.bottom),
+                          child: Container(
+                            height: size.height / 2,
+                            decoration: const BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(30),
+                                topRight: Radius.circular(30),
+                              ),
+                            ),
+                            child: Center(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    MyString.textInsertEmail,
+                                    style: textThem.headline4,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(24),
+                                    child: TextField(
+                                      textAlign: TextAlign.center,
+                                      decoration: InputDecoration(
+                                        hintText: "techblog@gmail.com",
+                                        hintStyle: textThem.headline6,
+                                      ),
+                                    ),
+                                  ),
+                                  ElevatedButton(
+                                    onPressed: () {},
+                                    child: const Text("ادامه"),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        );
+                      });
+                },
                 child: const Text(
                   "بزن بریم",
                 ),
-                style: ButtonStyle(
-                    textStyle: MaterialStateProperty.resolveWith((states) {
-                  if (states.contains(MaterialState.pressed)) {
-                    return textThem.headline1;
-                  }
-                  return textThem.subtitle1;
-                }), backgroundColor:
-                        MaterialStateProperty.resolveWith((states) {
-                  if (states.contains(MaterialState.pressed)) {
-                    return SolidColors.colorSeeMore;
-                  }
-                  return SolidColors.primary;
-                })),
-              )
+              ),
             ],
           ),
         ),

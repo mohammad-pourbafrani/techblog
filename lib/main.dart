@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:techblog/my_colors.dart';
-import 'package:techblog/view/splash_screen.dart';
+import 'package:techblog/view/register_intro.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
@@ -21,6 +21,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    var textThem = Theme.of(context).textTheme;
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       localizationsDelegates: const [
@@ -32,7 +33,29 @@ class MyApp extends StatelessWidget {
         Locale('fa', ''), // farsi or rtl
       ],
       theme: ThemeData(
-        fontFamily: 'Vazir',
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ButtonStyle(
+            textStyle: MaterialStateProperty.resolveWith((states) {
+              if (states.contains(MaterialState.pressed)) {
+                return textThem.headline1;
+              }
+              return textThem.subtitle1;
+            }),
+            backgroundColor: MaterialStateProperty.resolveWith((states) {
+              if (states.contains(MaterialState.pressed)) {
+                return SolidColors.colorSeeMore;
+              }
+              return SolidColors.primary;
+            }),
+          ),
+        ),
+        inputDecorationTheme: InputDecorationTheme(
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(16),
+              borderSide: const BorderSide(width: 2),
+            ),
+            filled: true,
+            fillColor: Colors.white),
         textTheme: const TextTheme(
           headline1: TextStyle(
             fontFamily: 'Vazir',
@@ -70,10 +93,16 @@ class MyApp extends StatelessWidget {
             color: Color.fromARGB(255, 0, 0, 0),
             fontWeight: FontWeight.w700,
           ),
+          headline6: TextStyle(
+            fontFamily: 'Vazir',
+            fontSize: 14,
+            color: SolidColors.colorHintText,
+            fontWeight: FontWeight.w700,
+          ),
         ),
       ),
       // home: const SplashScreen(),
-      home: const SplashScreen(),
+      home: const RegisterIntro(),
     );
   }
 }
