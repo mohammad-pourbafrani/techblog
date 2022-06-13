@@ -22,6 +22,7 @@ List<HashTagModel> tagList = [
   HashTagModel(title: "فلاتر"),
   HashTagModel(title: "ری اکت"),
 ];
+List<HashTagModel> selectedTags = [];
 
 List<BlogModel> blogList = [
   BlogModel(

@@ -19,6 +19,7 @@ class SolidColors {
   static const submitPodcast = Color.fromARGB(255, 246, 246, 246);
   static const divaiderColor = Color.fromARGB(255, 112, 112, 112);
   static const colorHintText = Color.fromARGB(255, 219, 219, 219);
+  static const surface = Color.fromARGB(255, 242, 242, 242);
 }
 
 class GradiantColors {

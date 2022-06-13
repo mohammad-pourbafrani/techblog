@@ -35,6 +35,10 @@ class $AssetsIconsGen {
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/downArrow.png
+  AssetGenImage get downArrow =>
+      const AssetGenImage('assets/images/downArrow.png');
+
   /// File path: assets/images/logo.png
   AssetGenImage get logo => const AssetGenImage('assets/images/logo.png');
 

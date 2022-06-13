@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:techblog/gen/assets.gen.dart';
 import 'package:techblog/models/fake_data.dart';
 import 'package:techblog/my_colors.dart';
+import 'package:techblog/my_component.dart';
 import 'package:techblog/my_string.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -294,35 +295,10 @@ class HomePageTagList extends StatelessWidget {
         itemBuilder: ((context, index) {
           return Padding(
             padding: EdgeInsets.fromLTRB(0, 8, index == 0 ? bodyMargin : 15, 8),
-            child: Container(
-              height: 60,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                gradient: const LinearGradient(
-                  colors: GradiantColors.tags,
-                  begin: Alignment.centerRight,
-                  end: Alignment.centerLeft,
-                ),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(16, 8, 8, 8),
-                child: Row(
-                  children: [
-                    ImageIcon(
-                      Assets.icons.hashtag,
-                      color: Colors.white,
-                      size: 15,
-                    ),
-                    const SizedBox(
-                      width: 8,
-                    ),
-                    Text(
-                      tagList[index].title,
-                      style: textThem.headline2,
-                    ),
-                  ],
-                ),
-              ),
+            child: MainGradientTags(
+              textThem: textThem,
+              index: index,
+              list: tagList,
             ),
           );
         }),

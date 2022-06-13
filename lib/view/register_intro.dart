@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:techblog/gen/assets.gen.dart';
 import 'package:techblog/my_string.dart';
+import 'package:techblog/view/my_cats.dart';
 import 'package:validators/validators.dart';
 
 class RegisterIntro extends StatelessWidget {
@@ -87,7 +88,67 @@ class RegisterIntro extends StatelessWidget {
                       ),
                     ),
                     ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pop(context);
+                        _activeteCodeBottomSheet(context, size, textThem);
+                      },
+                      child: const Text("ادامه"),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          );
+        });
+  }
+
+  Future<dynamic> _activeteCodeBottomSheet(
+      BuildContext context, Size size, TextTheme textThem) {
+    return showModalBottomSheet(
+        isScrollControlled: true,
+        backgroundColor: Colors.transparent,
+        context: context,
+        builder: (context) {
+          return Padding(
+            padding: EdgeInsets.only(
+                bottom: MediaQuery.of(context).viewInsets.bottom),
+            child: Container(
+              height: size.height / 2,
+              decoration: const BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(30),
+                  topRight: Radius.circular(30),
+                ),
+              ),
+              child: Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      MyString.textActiveCodEmail,
+                      style: textThem.headline4,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(24),
+                      child: TextField(
+                        style: textThem.headline4,
+                        onChanged: (value) {},
+                        textAlign: TextAlign.center,
+                        decoration: InputDecoration(
+                          hintText: "******",
+                          hintStyle: textThem.headline6,
+                        ),
+                      ),
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(
+                            builder: (context) => MyCats(),
+                          ),
+                        );
+                      },
                       child: const Text("ادامه"),
                     ),
                   ],

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:techblog/gen/assets.gen.dart';
 import 'package:techblog/my_colors.dart';
+import 'package:techblog/my_component.dart';
 import 'package:techblog/view/home_screen.dart';
 import 'package:techblog/view/profile_screen.dart';
+import 'package:techblog/view/register_intro.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -10,6 +12,8 @@ class MainScreen extends StatefulWidget {
   @override
   State<MainScreen> createState() => _MainScreenState();
 }
+
+final GlobalKey<ScaffoldState> _key = GlobalKey();
 
 class _MainScreenState extends State<MainScreen> {
   var selectedPageIndex = 0;
@@ -22,16 +26,79 @@ class _MainScreenState extends State<MainScreen> {
 
     return SafeArea(
       child: Scaffold(
+        key: _key,
+        drawer: Drawer(
+          backgroundColor: SolidColors.scaffoldBg,
+          child: Padding(
+            padding: EdgeInsets.only(right: bodyMargin, left: bodyMargin),
+            child: ListView(
+              children: [
+                DrawerHeader(
+                  child: Image.asset(
+                    Assets.images.logo.path,
+                    scale: 3,
+                  ),
+                ),
+                ListTile(
+                  onTap: () {},
+                  title: Text(
+                    "پروفایل کاربری",
+                    style: textThem.headline4,
+                  ),
+                ),
+                const Divider(
+                  color: SolidColors.divaiderColor,
+                ),
+                ListTile(
+                  onTap: () {},
+                  title: Text(
+                    "درباره تک‌بلاگ",
+                    style: textThem.headline4,
+                  ),
+                ),
+                const Divider(
+                  color: SolidColors.divaiderColor,
+                ),
+                ListTile(
+                  onTap: () {},
+                  title: Text(
+                    "اشتراک گذاری تک بلاگ",
+                    style: textThem.headline4,
+                  ),
+                ),
+                const Divider(
+                  color: SolidColors.divaiderColor,
+                ),
+                ListTile(
+                  onTap: () {},
+                  title: Text(
+                    "تک‌بلاگ در گیت هاب",
+                    style: textThem.headline4,
+                  ),
+                ),
+                const Divider(
+                  color: SolidColors.divaiderColor,
+                ),
+              ],
+            ),
+          ),
+        ),
         backgroundColor: SolidColors.scaffoldBg,
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           elevation: 0,
           backgroundColor: SolidColors.scaffoldBg,
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              const Icon(
-                Icons.menu,
-                color: Colors.black,
+              InkWell(
+                onTap: () {
+                  _key.currentState!.openDrawer();
+                },
+                child: const Icon(
+                  Icons.menu,
+                  color: Colors.black,
+                ),
               ),
               Image(
                 image: Assets.images.logo,
@@ -52,8 +119,9 @@ class _MainScreenState extends State<MainScreen> {
                 children: [
                   HomeScreen(
                       size: size, textThem: textThem, bodyMargin: bodyMargin),
+                  const RegisterIntro(),
                   ProfileScreen(
-                      size: size, textThem: textThem, bodyMargin: bodyMargin)
+                      size: size, textThem: textThem, bodyMargin: bodyMargin),
                 ],
               ),
             ),
@@ -126,7 +194,7 @@ class BottomNavigation extends StatelessWidget {
                   ),
                 ),
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () => changeScreen(1),
                   icon: ImageIcon(
                     Assets.icons.write,
                     color: Colors.white,
@@ -134,7 +202,7 @@ class BottomNavigation extends StatelessWidget {
                   ),
                 ),
                 IconButton(
-                  onPressed: () => changeScreen(1),
+                  onPressed: () => changeScreen(2),
                   icon: ImageIcon(
                     Assets.icons.user,
                     color: Colors.white,
