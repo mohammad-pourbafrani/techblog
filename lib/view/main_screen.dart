@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:techblog/gen/assets.gen.dart';
 import 'package:techblog/components/my_colors.dart';
 import 'package:techblog/components/my_component.dart';
@@ -6,17 +7,12 @@ import 'package:techblog/view/home_screen.dart';
 import 'package:techblog/view/profile_screen.dart';
 import 'package:techblog/view/register_intro.dart';
 
-class MainScreen extends StatefulWidget {
-  const MainScreen({Key? key}) : super(key: key);
-
-  @override
-  State<MainScreen> createState() => _MainScreenState();
-}
-
 final GlobalKey<ScaffoldState> _key = GlobalKey();
 
-class _MainScreenState extends State<MainScreen> {
-  var selectedPageIndex = 0;
+class MainScreen extends StatelessWidget {
+  RxInt selectedPageIndex = 0.obs;
+
+  MainScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -114,15 +110,17 @@ class _MainScreenState extends State<MainScreen> {
         body: Stack(
           children: [
             Positioned.fill(
-              child: IndexedStack(
-                index: selectedPageIndex,
-                children: [
-                  HomeScreen(
-                      size: size, textThem: textThem, bodyMargin: bodyMargin),
-                  const RegisterIntro(),
-                  ProfileScreen(
-                      size: size, textThem: textThem, bodyMargin: bodyMargin),
-                ],
+              child: Obx(
+                () => IndexedStack(
+                  index: selectedPageIndex.value,
+                  children: [
+                    HomeScreen(
+                        size: size, textThem: textThem, bodyMargin: bodyMargin),
+                    const RegisterIntro(),
+                    ProfileScreen(
+                        size: size, textThem: textThem, bodyMargin: bodyMargin),
+                  ],
+                ),
               ),
             ),
 
@@ -131,9 +129,7 @@ class _MainScreenState extends State<MainScreen> {
               size: size,
               bodyMargin: bodyMargin,
               changeScreen: (int value) {
-                setState(() {
-                  selectedPageIndex = value;
-                });
+                selectedPageIndex.value = value;
               },
             ),
           ],
