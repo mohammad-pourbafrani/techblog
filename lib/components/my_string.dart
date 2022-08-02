@@ -1,4 +1,6 @@
 class MyString {
+  static const String techblogGithubUrl =
+      "https://github.com/sasansafari/techblog";
   static const String viewHottestBlog = "مشاهده داغ ترین نوشته ها ";
   static const String viewHottestPodcasts = "مشاهده داغ ترین پادکست ها ";
   static const String relatedArticle = "نوشته های مرتبط";

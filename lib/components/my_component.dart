@@ -1,6 +1,9 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:techblog/gen/assets.gen.dart';
 import 'package:techblog/models/fake_data.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'my_colors.dart';
 
@@ -66,5 +69,15 @@ class MainGradientTags extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+myLaunchUrl(String url) async {
+  var uri = Uri.parse(url);
+
+  if (await canLaunchUrl(uri)) {
+    launchUrl(uri);
+  } else {
+    log("could not launch ${uri.toString()}");
   }
 }

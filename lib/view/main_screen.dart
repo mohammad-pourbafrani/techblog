@@ -70,7 +70,9 @@ class MainScreen extends StatelessWidget {
                   color: SolidColors.divaiderColor,
                 ),
                 ListTile(
-                  onTap: () {},
+                  onTap: () {
+                    myLaunchUrl(MyString.techblogGithubUrl);
+                  },
                   title: Text(
                     "تک‌بلاگ در گیت هاب",
                     style: textThem.headline4,
