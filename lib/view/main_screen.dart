@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:share_plus/share_plus.dart';
+import 'package:techblog/components/my_string.dart';
 import 'package:techblog/gen/assets.gen.dart';
 import 'package:techblog/components/my_colors.dart';
 import 'package:techblog/components/my_component.dart';
@@ -56,7 +58,9 @@ class MainScreen extends StatelessWidget {
                   color: SolidColors.divaiderColor,
                 ),
                 ListTile(
-                  onTap: () {},
+                  onTap: () async {
+                    await Share.share(MyString.textSheare);
+                  },
                   title: Text(
                     "اشتراک گذاری تک بلاگ",
                     style: textThem.headline4,

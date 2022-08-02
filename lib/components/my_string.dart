@@ -16,6 +16,12 @@ class MyString {
 برای ارسال مطلب و پادکست باید حتما 
 ثبت نام کنی 
 """;
+  static const String textSheare = """
+من از تکبلاگ استفاده میکنم،خیلیخوبه.تئهم داشته باش./n
+
+www.sasansafari.com
+
+""";
   static const String successfulRegistraition =
       """تبریک میگم ، ایمیل با موفقیت تایید شد
 لطفا اطلاعات ثبت نام رو کامل کن
