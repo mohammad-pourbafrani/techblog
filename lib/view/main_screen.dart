@@ -1,10 +1,14 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:share_plus/share_plus.dart';
+import 'package:techblog/components/api_constant.dart';
 import 'package:techblog/components/my_string.dart';
 import 'package:techblog/gen/assets.gen.dart';
 import 'package:techblog/components/my_colors.dart';
 import 'package:techblog/components/my_component.dart';
+import 'package:techblog/services/dio_service.dart';
 import 'package:techblog/view/home_screen.dart';
 import 'package:techblog/view/profile_screen.dart';
 import 'package:techblog/view/register_intro.dart';
@@ -70,8 +74,8 @@ class MainScreen extends StatelessWidget {
                   color: SolidColors.divaiderColor,
                 ),
                 ListTile(
-                  onTap: () {
-                    myLaunchUrl(MyString.techblogGithubUrl);
+                  onTap: () async {
+                    await myLaunchUrl(MyString.techblogGithubUrl);
                   },
                   title: Text(
                     "تک‌بلاگ در گیت هاب",
@@ -159,6 +163,7 @@ class BottomNavigation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    DioService().getMethod(ApiConstant.getHomeItemsUrl);
     return Positioned(
       bottom: 0,
       left: 0,
