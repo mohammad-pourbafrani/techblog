@@ -1,6 +1,9 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:get/get.dart';
+import 'package:techblog/controller/home_screen_controller.dart';
 import 'package:techblog/gen/assets.gen.dart';
 import 'package:techblog/models/fake_data.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -62,7 +65,7 @@ class MainGradientTags extends StatelessWidget {
               width: 8,
             ),
             Text(
-              list[index].title,
+              Get.find<HomeScreenController>().tagsList[index].title!,
               style: textThem.headline2,
             ),
           ],
@@ -79,5 +82,19 @@ Future myLaunchUrl(String url) async {
     launchUrl(uri);
   } else {
     log("could not launch ${uri.toString()}");
+  }
+}
+
+class Loading extends StatelessWidget {
+  const Loading({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return const SpinKitFadingCube(
+      color: SolidColors.primary,
+      size: 32.0,
+    );
   }
 }

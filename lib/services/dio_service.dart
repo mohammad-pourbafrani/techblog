@@ -17,7 +17,6 @@ class DioService {
       ),
     )
         .then((response) {
-      log(response.toString());
       return response;
     });
   }
