@@ -105,7 +105,7 @@ class MyApp extends StatelessWidget {
         ),
       ),
       // home: const SplashScreen(),
-      home: const ArticleListScreen(),
+      home: ArticleListScreen(),
     );
   }
 }
