@@ -3,7 +3,7 @@ import 'package:techblog/gen/assets.gen.dart';
 import 'package:techblog/components/my_colors.dart';
 import 'package:techblog/components/my_string.dart';
 
-import '../components/my_component.dart';
+import '../../components/my_component.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({

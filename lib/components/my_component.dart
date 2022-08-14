@@ -1,14 +1,12 @@
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
+import 'package:techblog/components/my_colors.dart';
+import 'package:techblog/components/text_style.dart';
 import 'package:techblog/controller/home_screen_controller.dart';
 import 'package:techblog/gen/assets.gen.dart';
-import 'package:techblog/models/fake_data.dart';
 import 'package:url_launcher/url_launcher.dart';
-
-import 'my_colors.dart';
 
 class TechDivaider extends StatelessWidget {
   const TechDivaider({
@@ -97,4 +95,39 @@ class Loading extends StatelessWidget {
       size: 32.0,
     );
   }
+}
+
+PreferredSize appBar(String title) {
+  return PreferredSize(
+    preferredSize: const Size.fromHeight(80),
+    child: Padding(
+      padding: const EdgeInsets.all(12),
+      child: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(left: 16),
+            child: Center(
+              child: Text(
+                title,
+                style: appBarTextStyle,
+              ),
+            ),
+          )
+        ],
+        leading: Padding(
+          padding: const EdgeInsets.only(right: 16),
+          child: Container(
+            width: 40,
+            height: 40,
+            decoration: BoxDecoration(
+                color: SolidColors.primary.withAlpha(200),
+                shape: BoxShape.circle),
+            child: const Icon(Icons.keyboard_arrow_right_rounded),
+          ),
+        ),
+      ),
+    ),
+  );
 }
