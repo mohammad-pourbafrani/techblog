@@ -4,7 +4,7 @@ import 'package:techblog/components/api_constant.dart';
 import 'package:techblog/models/article_model.dart';
 import 'package:techblog/services/dio_service.dart';
 
-class ArticleContriller extends GetxController {
+class ListArticleContriller extends GetxController {
   RxList<ArticleModel> articleList = RxList();
 
   RxBool loading = false.obs;
@@ -12,10 +12,10 @@ class ArticleContriller extends GetxController {
   @override
   onInit() {
     super.onInit();
-    getHomeItem();
+    getArticleList();
   }
 
-  getHomeItem() async {
+  getArticleList() async {
     loading.value = true;
     // ignore: todo
     //TODO: get user id from getStorage ApiConstant.getArticleListUrl + userid

@@ -22,6 +22,7 @@ class SolidColors {
   static const colorHintText = Color.fromARGB(255, 219, 219, 219);
   static const surface = Color.fromARGB(255, 242, 242, 242);
   static const colorIconImageNotFound = Colors.grey;
+  static const colorBackgrandTagSingleArticle = Colors.grey;
 }
 
 class GradiantColors {
@@ -45,5 +46,9 @@ class GradiantColors {
     Color.fromARGB(0, 6, 6, 6),
     Color.fromARGB(175, 72, 20, 87),
     Color.fromARGB(255, 28, 20, 81),
+  ];
+  static const List<Color> singleAppBarGradiant = [
+    Color.fromARGB(255, 46, 3, 71),
+    Color.fromARGB(0, 0, 0, 0),
   ];
 }

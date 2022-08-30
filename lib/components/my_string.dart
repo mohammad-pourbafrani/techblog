@@ -13,6 +13,7 @@ class MyString {
   static const String textInsertEmail = "لطفا ایمیلت رو وارد کن";
   static const String textActiveCodEmail = "کد فعال سازی رو وارد کن ";
   static const String textcategori = "دسته بندی هایی که دوست داری رو انتخاب کن";
+  static const String textSingleArticle = "نوشته های مرتبط";
   static const String welcom = """به تک‌بلاگ خوش اومدی
 
 برای ارسال مطلب و پادکست باید حتما 

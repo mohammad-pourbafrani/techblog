@@ -25,8 +25,8 @@ class ProfileScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           //avatar image
-          Image(
-            image: Assets.images.profileAvatar,
+          Image.asset(
+            Assets.images.profileAvatar.path,
             height: 100,
           ),
           const SizedBox(
@@ -37,7 +37,7 @@ class ProfileScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               ImageIcon(
-                Assets.icons.penBlue,
+                Image.asset(Assets.icons.penBlue.path).image,
                 color: SolidColors.colorSeeMore,
               ),
               const SizedBox(

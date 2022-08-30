@@ -55,7 +55,7 @@ class MainGradientTags extends StatelessWidget {
         child: Row(
           children: [
             ImageIcon(
-              Assets.icons.hashtag,
+              Image.asset(Assets.icons.hashtag.path).image,
               color: Colors.white,
               size: 15,
             ),

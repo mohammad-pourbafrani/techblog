@@ -106,8 +106,8 @@ class MainScreen extends StatelessWidget {
                   color: Colors.black,
                 ),
               ),
-              Image(
-                image: Assets.images.logo,
+              Image.asset(
+                Assets.images.logo.path,
                 height: size.height / 13.6,
               ),
               const Icon(
@@ -195,7 +195,7 @@ class BottomNavigation extends StatelessWidget {
                 IconButton(
                   onPressed: () => changeScreen(0),
                   icon: ImageIcon(
-                    Assets.icons.home,
+                    Image.asset(Assets.icons.home.path).image,
                     color: Colors.white,
                     size: 32,
                   ),
@@ -203,7 +203,7 @@ class BottomNavigation extends StatelessWidget {
                 IconButton(
                   onPressed: () => changeScreen(1),
                   icon: ImageIcon(
-                    Assets.icons.write,
+                    Image.asset(Assets.icons.write.path).image,
                     color: Colors.white,
                     size: 32,
                   ),
@@ -211,7 +211,7 @@ class BottomNavigation extends StatelessWidget {
                 IconButton(
                   onPressed: () => changeScreen(2),
                   icon: ImageIcon(
-                    Assets.icons.user,
+                    Image.asset(Assets.icons.user.path).image,
                     color: Colors.white,
                     size: 32,
                   ),
