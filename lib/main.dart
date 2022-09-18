@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:techblog/components/my_colors.dart';
-import 'package:techblog/view/article_list_screen.dart';
+import 'package:techblog/view/article/article_list_screen.dart';
+import 'package:techblog/view/splash_screen.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
@@ -95,7 +96,7 @@ class MyApp extends StatelessWidget {
         ),
       ),
       // home: const SplashScreen(),
-      home: ArticleListScreen(),
+      home: const SplashScreen(),
     );
   }
 }

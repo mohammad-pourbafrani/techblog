@@ -4,21 +4,22 @@ import 'package:get/get.dart';
 import 'package:techblog/components/my_component.dart';
 import 'package:techblog/controller/list_article_controller.dart';
 import 'package:techblog/controller/single_article_controller.dart';
-import 'package:techblog/view/single_article_screen.dart';
+import 'package:techblog/view/article/single_article_screen.dart';
 
 class ArticleListScreen extends StatelessWidget {
-  ArticleListScreen({Key? key}) : super(key: key);
+  ArticleListScreen({Key? key, required this.title}) : super(key: key);
   final ListArticleContriller listArticleContriller =
       Get.put(ListArticleContriller());
   final SingleArticleContriller singleArticleContriller =
       Get.put(SingleArticleContriller());
+  final String title;
 
   @override
   Widget build(BuildContext context) {
     var textTheme = Theme.of(context).textTheme;
     return SafeArea(
       child: Scaffold(
-        appBar: appBar("لیست مقاله ها"),
+        appBar: appBar(title),
         body: Padding(
           padding: const EdgeInsets.all(8.0),
           child: SizedBox(
@@ -28,9 +29,9 @@ class ArticleListScreen extends StatelessWidget {
               itemBuilder: (context, index) {
                 return GestureDetector(
                   onTap: () {
-                    singleArticleContriller.id.value = int.parse(
-                        listArticleContriller.articleList[index].id.toString());
-                    Get.to(const SingleArticleScreen());
+                    singleArticleContriller.getArticleInfo(int.parse(
+                        listArticleContriller.articleList[index].id!));
+                    Get.to(SingleArticleScreen());
                   },
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),

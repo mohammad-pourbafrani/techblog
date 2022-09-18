@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:techblog/controller/register_controller.dart';
 import 'package:techblog/gen/assets.gen.dart';
 import 'package:techblog/components/my_string.dart';
 import 'package:techblog/view/my_cats.dart';
 import 'package:validators/validators.dart';
 
 class RegisterIntro extends StatelessWidget {
-  const RegisterIntro({Key? key}) : super(key: key);
+  RegisterIntro({Key? key}) : super(key: key);
+  final RegisterController registerController = Get.put(RegisterController());
 
   @override
   Widget build(BuildContext context) {
@@ -78,6 +81,8 @@ class RegisterIntro extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(24),
                       child: TextField(
+                        controller:
+                            registerController.emailTextEditeingController,
                         style: textThem.headline4,
                         onChanged: (value) {},
                         textAlign: TextAlign.center,
@@ -89,6 +94,7 @@ class RegisterIntro extends StatelessWidget {
                     ),
                     ElevatedButton(
                       onPressed: () {
+                        registerController.register();
                         Navigator.pop(context);
                         _activeteCodeBottomSheet(context, size, textThem);
                       },
@@ -132,6 +138,8 @@ class RegisterIntro extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(24),
                       child: TextField(
+                        controller:
+                            registerController.activeCodeTextEditeingController,
                         style: textThem.headline4,
                         onChanged: (value) {},
                         textAlign: TextAlign.center,
@@ -143,11 +151,12 @@ class RegisterIntro extends StatelessWidget {
                     ),
                     ElevatedButton(
                       onPressed: () {
-                        Navigator.of(context).pushReplacement(
-                          MaterialPageRoute(
-                            builder: (context) => MyCats(),
-                          ),
-                        );
+                        registerController.verify();
+                        // Navigator.of(context).pushReplacement(
+                        //   MaterialPageRoute(
+                        //     builder: (context) => MyCats(),
+                        //   ),
+                        // );
                       },
                       child: const Text("ادامه"),
                     ),

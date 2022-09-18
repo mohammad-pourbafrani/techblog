@@ -11,7 +11,7 @@ import 'package:techblog/components/my_component.dart';
 import 'package:techblog/services/dio_service.dart';
 import 'package:techblog/view/main_screen/home_screen.dart';
 import 'package:techblog/view/main_screen/profile_screen.dart';
-import 'package:techblog/view/register_intro.dart';
+import 'package:techblog/view/register/register_intro.dart';
 
 final GlobalKey<ScaffoldState> _key = GlobalKey();
 
@@ -126,7 +126,6 @@ class MainScreen extends StatelessWidget {
                   children: [
                     HomeScreen(
                         size: size, textThem: textThem, bodyMargin: bodyMargin),
-                    const RegisterIntro(),
                     ProfileScreen(
                         size: size, textThem: textThem, bodyMargin: bodyMargin),
                   ],
@@ -201,7 +200,10 @@ class BottomNavigation extends StatelessWidget {
                   ),
                 ),
                 IconButton(
-                  onPressed: () => changeScreen(1),
+                  onPressed: () {
+                    //TODO:cheack login status
+                    Get.to(RegisterIntro());
+                  },
                   icon: ImageIcon(
                     Image.asset(Assets.icons.write.path).image,
                     color: Colors.white,
@@ -209,7 +211,7 @@ class BottomNavigation extends StatelessWidget {
                   ),
                 ),
                 IconButton(
-                  onPressed: () => changeScreen(2),
+                  onPressed: () => changeScreen(1),
                   icon: ImageIcon(
                     Image.asset(Assets.icons.user.path).image,
                     color: Colors.white,

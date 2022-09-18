@@ -3,4 +3,5 @@ class ApiConstant {
   static const baseUrl = "https://techblog.sasansafari.com/Techblog/api/";
   static const getHomeItemsUrl = baseUrl + "home/?command=index";
   static const getArticleListUrl = baseUrl + "article/get.php?command=new&";
+  static const postRegisterUrl = baseUrl + "register/action.php";
 }
